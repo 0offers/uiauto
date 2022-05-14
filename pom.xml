@@ -16,6 +16,8 @@
     <properties>
         <java.version>1.8</java.version>
         <aspectj.version>1.9.9.1</aspectj.version>
+        <!--需要将skipTests设置为false才可以走单元测试哦。如果设置为true的话，要么不会生成覆盖率，要么覆盖率为0-->
+        <!--<skipTests>true</skipTests>-->
     </properties>
     <dependencies>
 
