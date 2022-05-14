@@ -1,0 +1,5 @@
+https://www.cnblogs.com/chenghu/p/13912969.html
+java: 程序包org.springframework.boot不存在
+java: 程序包org.springframework.boot.autoconfigure不存在
+java: 找不到符号
+解决办法：勾选需设置Maven  > Runner  > Delegate IDE build/run actions to Maven。

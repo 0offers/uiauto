@@ -3,7 +3,7 @@ server:
 
 mybatis:
  #设置实体类别名
- type-aliases-package: com.interfaceautomationplatform.automation.entity
+ type-aliases-package: com.uiauto.entity
  #mapper文件的路径
  mapper-locations: classpath:mapper/*.xml
  configuration:
@@ -27,6 +27,7 @@ spring:
     druid:
       db-type: com.alibaba.druid.pool.DruidDataSource
       driver: com.mysql.cj.jdbc.Driver
+      ######数据库名、用户名和密码稍后替换######
       url:  jdbc:mysql://localhost:3306/auto_test?characterEncoding=utf8&useSSL=false&serverZone=UTC&rewriteBatchedStatements=true
       username: root
       password: dansmile3205
@@ -66,12 +67,13 @@ spring:
       #合并多个DruidDataSource的监控数据
       use-global-data-source-stat: true
       #Spring监控AOP切入点，如x.y.z.service.*,配置多个英文逗号分隔
-      aop-patterns: com.springboot.servie.*
+      aop-patterns: com.uiauto.service.*,com.uiauto.serviceimpl.*
       web-stat-filter:
         #WebStatFilter监控配置
         enabled: true
         #添加过滤规则：那些访问拦截统计
         url-pattern: /*
+
 
 
 
