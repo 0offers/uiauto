@@ -44,11 +44,25 @@
             <scope>test</scope>
         </dependency>
 
+        <!--Allure报告依赖包-->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>2.17.3</version>
         </dependency>
+
+        <!--Allure报告生成插件依赖包-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+
+       <!-- <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.8</version>
+        </dependency>-->
 
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -97,11 +111,6 @@
             <version>2.0.2</version>
         </dependency>
 
-        <!--<dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>${aspectj.version}</version>
-        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
@@ -138,6 +147,8 @@
                     <argLine>
                     -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
+                    <!-- 测试失败后，是否忽略并继续测试 -->
+                    <testFailureIgnore>true</testFailureIgnore>
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
@@ -147,16 +158,16 @@
                             <value>false</value>
                         </property>
                     </properties>
+                    <systemProperties>
+                        <!--定义输出在项目 target 目录-->
+                        <property>
+                            <name>allure.results.directory</name>
+                            <value>target/allure-results</value>
+                        </property>
+                    </systemProperties>
                     <!-- 使allure-results在target文件夹下（很重要） -->
-                    <workingDirectory>target/</workingDirectory>
+                    <!--<workingDirectory>target/allure-results</workingDirectory>-->
                 </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
-                    </dependency>
-                </dependencies>
             </plugin>
 
             <plugin>
