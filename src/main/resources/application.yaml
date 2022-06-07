@@ -84,6 +84,10 @@ spring:
        max-wait: -1 #连接池最大阻塞等待时间（使用负值表示没有限制）
    timeout: 6000 #连接超时时间（毫秒）
 
-
-
+#rabbitmq配置
+ rabbitmq:
+   host: 127.0.0.1
+   port: 5672
+   username: XXXXX
+   password: XXXXX
 
