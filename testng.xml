@@ -7,7 +7,7 @@
     <test name="FirefoxTest">
         <parameter name="browser" value="Firefox"/>
         <classes>
-            <class name="com.uiauto.BastTest"/>
+            <class name="com.uiauto.BaseTest"/>
         </classes>
     </test>
 </suite>
