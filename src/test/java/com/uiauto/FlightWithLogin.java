@@ -2,9 +2,9 @@ package com.uiauto;
 
 import Pages.LoginPage;
 import org.openqa.selenium.Cookie;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
-
 import java.util.HashSet;
 import java.util.Set;
 //<!--preserve-order="true"&&@Test(priority = 2)方法的执行的顺序-->
@@ -23,4 +23,3 @@ public class FlightWithLogin extends BaseTest{
     }
     //FbLoginPage loginpage = PageFactory.initElements(driver, FbLoginPage.class);
     //loginpage.setEmail("your-username");
-}
