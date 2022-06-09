@@ -39,12 +39,13 @@ class BaseTest extends AbstractTestNGSpringContextTests {
 
     @BeforeMethod
     @Parameters("browser")
-    public void setUp(ITestContext context,@Optional("chrome")String browser){
+    public void setUp(@Optional("chrome")String browser){
         //驱动器采用环境变量配置
         if(browser.equalsIgnoreCase("firefox")){
             driver = new FirefoxDriver();
         }
         else if(browser.equalsIgnoreCase("chrome")){
+            //System.setProperty("webdriver.chrome.driver","src/main/resources/driver/chromedriver");
             driver = new ChromeDriver();
         }
         else if(browser.equalsIgnoreCase("ie")){
