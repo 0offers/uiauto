@@ -91,3 +91,19 @@ spring:
    username: XXXXX
    password: XXXXX
 
+#热部署配置
+ devtools:
+   restart:
+     enabled: true #开启热部署
+     additional-paths: src/main/java
+     exclude: static/**
+
+ # 页面修改后立即生效，关闭缓存，立即刷新
+ thymeleaf:
+   cache: false
+
+ freemarker:
+   cache: false
+
+
+
