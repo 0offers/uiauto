@@ -91,7 +91,7 @@ spring:
    username: XXXXX
    password: XXXXX
 
-#热部署配置
+#热部署配置（或者使用JRebel）
  devtools:
    restart:
      enabled: true #开启热部署
