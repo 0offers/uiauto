@@ -6,8 +6,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
@@ -15,13 +20,20 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+@AutoConfigureMockMvc
 @SpringBootTest(classes=UiautoApplication.class)
 class BaseTest extends AbstractTestNGSpringContextTests {
     public static WebDriver driver;
     public String url;
+    @Autowired
+    private MockMvc mockMvc;
+    //@Autowired
+    //private WebApplicationContext webApplicationContext;
 
     @BeforeTest
     public void cleanUp(){
+        //https://blog.csdn.net/u010798073/article/details/115831800
+        // mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
         //清除报告的位置
         String reportPath="target/allure-results";
         File report=new File(reportPath);
@@ -52,7 +64,7 @@ class BaseTest extends AbstractTestNGSpringContextTests {
             driver = new EdgeDriver();
         }
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(2000, TimeUnit.SECONDS);
     }
 
     @AfterMethod
