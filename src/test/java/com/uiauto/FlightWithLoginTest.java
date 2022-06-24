@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import java.util.HashSet;
 import java.util.Set;
 //<!--preserve-order="true"&&@Test(priority = 2)方法的执行的顺序-->
-public class FlightWithLogin extends BaseTest{
+public class FlightWithLoginTest extends BaseTest{
     Set<Cookie> allCookies = new HashSet<Cookie>();
     @Test(priority = 0)
     public void login() throws InterruptedException{
@@ -18,6 +18,7 @@ public class FlightWithLogin extends BaseTest{
             LoginPage loginpage = PageFactory.initElements(driver, LoginPage.class);
             loginpage.login(username, password);
             Thread.sleep(100);
+            //获取cookie
             allCookies = driver.manage().getCookies();
             //添加cookie
             for(Cookie cookie: allCookies) {

@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 public class BasePage {
     //logback-->slf4j|log4j-->slf4j
-    private static  Logger logger= LoggerFactory.getLogger(BasePage.class);
+    private static final Logger logger= LoggerFactory.getLogger(BasePage.class);
     WebDriver driver;
     public BasePage(WebDriver driver){
         this.driver=driver;
@@ -20,6 +20,20 @@ public class BasePage {
             driver.findElement((By) element).click();
         }else{
             ((WebElement) element).click();
+        }
+    }
+    public <T> void sendKeys(T element,String value){
+        if(element.getClass().getName().contains("By")) {
+            driver.findElement((By) element).sendKeys(value);
+        } else {
+            ((WebElement) element).sendKeys(value);
+        }
+    }
+    public <T> void clear (T element) {
+        if(element.getClass().getName().contains("By")) {
+            driver.findElement((By) element).clear();
+        } else {
+            ((WebElement) element).clear();
         }
     }
 }

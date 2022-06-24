@@ -19,7 +19,7 @@ public class LoginPage extends BasePage {
     public LoginPage(WebDriver driver){
         super(driver);
     }
-    public void login(String username,String password){
+    public void login(String username, String password){
         String url="https://www.trip.com/account/signin?curr=USD&language=EN&locale=en_us&backurl=https%3A%2F%2Fwww.trip.com%2Fflights%2F";
        /* if (environment.equals("Bastion") ) {
             url = "https://www.trip.com/account/signin?curr=USD&language=EN&locale=en_us&backurl=https%3A%2F%2Fwww.trip.com%2Fflights%2F";
@@ -28,19 +28,20 @@ public class LoginPage extends BasePage {
         }*/
         driver.get(url);
         driver.manage().deleteAllCookies();
-        sendKeys(userNameBox, username);
+        sendKeys(userNameBox,username);
         sendKeys(passwordBox, password);
         //if visiable dragButton:
-        if (isPresent(dragButton)) {
+       /* if (isPresent(dragButton)) {
             dragAndDrop(dragButton, 263, 0);
         }
         waitClickable(signinButton);
-        clickAndWaitInvisible(signinButton, loadingIndicator);
+        clickAndWaitInvisible(signinButton, loadingIndicator);*/
     }
     //跳转界面
-    public HomePage search() {
-        click(searchBtn);
-        return PageFactory.initElements(driver, HomePage.class);
+    public LoginPage search(){
+        click(dragButton);
+        return PageFactory.initElements(driver, LoginPage.class);
     }
 }
+
 

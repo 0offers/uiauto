@@ -6,9 +6,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -22,6 +26,8 @@ import java.util.concurrent.TimeUnit;
 
 @AutoConfigureMockMvc
 @SpringBootTest(classes=UiautoApplication.class)
+@PropertySource(value = "classpath:config.properties")
+@Component
 class BaseTest extends AbstractTestNGSpringContextTests {
     public static WebDriver driver;
     public String url;
@@ -29,7 +35,10 @@ class BaseTest extends AbstractTestNGSpringContextTests {
     private MockMvc mockMvc;
     //@Autowired
     //private WebApplicationContext webApplicationContext;
-
+    @Value("${driver.browser}")
+    public String browser;
+    @Value("${driver.path}")
+    public String driverPath;
     @BeforeTest
     public void cleanUp(){
         //https://blog.csdn.net/u010798073/article/details/115831800
@@ -50,21 +59,25 @@ class BaseTest extends AbstractTestNGSpringContextTests {
     }
 
     @BeforeMethod
-    @Parameters("browser")
-    public void setUp(@Optional("chrome")String browser){
+    //@Parameters("browser")
+    //public void setUp(@Optional("chrome")String browser){
+    public void setUp(){
         //驱动器采用环境变量配置
         if(browser.equalsIgnoreCase("firefox")){
+            System.setProperty("webdriver.gecko.driver",driverPath);
             driver = new FirefoxDriver();
         }
         else if(browser.equalsIgnoreCase("chrome")){
+            //System.setProperty("webdriver.chrome.driver","C:\\selenium_driver\\chromedriver.exe");
             //System.setProperty("webdriver.chrome.driver","src/main/resources/driver/chromedriver");
+            System.setProperty("webdriver.chrome.driver",driverPath);
             driver = new ChromeDriver();
+        }else if(browser.equalsIgnoreCase("ie")){
+            System.setProperty("webdriver.ie.driver",driverPath);
+            driver = new InternetExplorerDriver();
         }
-        else if(browser.equalsIgnoreCase("ie")){
-            driver = new EdgeDriver();
-        }
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(2000, TimeUnit.SECONDS);
+        driver.manage().window().maximize();//窗口最大化
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @AfterMethod
