@@ -13,11 +13,11 @@ public class FlightWithLoginTest extends BaseTest{
     @Test(priority = 0)
     public void login() throws InterruptedException{
             //后面考虑将一些参数写入配置文件里面application.yaml
-            String username = "dyangc@ctrip.com";
-            String password = "12345678";
+            //String username = "dyangc@ctrip.com";
+            //String password = "12345678";
             LoginPage loginpage = PageFactory.initElements(driver, LoginPage.class);
             loginpage.login(username, password);
-            Thread.sleep(100);
+            //Thread.sleep(100);
             //获取cookie
             allCookies = driver.manage().getCookies();
             //添加cookie
@@ -26,6 +26,8 @@ public class FlightWithLoginTest extends BaseTest{
                 driver.manage().addCookie(cookie);
                 }
             }
+            //页面刷新
+            driver.navigate().refresh();
             //添加selenium的断言
         }
 

@@ -31,7 +31,6 @@ import java.util.concurrent.TimeUnit;
 @Component
 class BaseTest extends AbstractTestNGSpringContextTests {
     public static WebDriver driver;
-    //public String url;
     @Autowired
     private MockMvc mockMvc;
     //@Autowired
@@ -42,6 +41,10 @@ class BaseTest extends AbstractTestNGSpringContextTests {
     public String driverPath;
     @Value("${driver.version}")
     public String browserVersion;
+    @Value("${login.name}")
+    public String username;
+    @Value("${login.password}")
+    public String password;
     @BeforeTest
     public void cleanUp(){
         //https://blog.csdn.net/u010798073/article/details/115831800
@@ -84,9 +87,8 @@ class BaseTest extends AbstractTestNGSpringContextTests {
             WebDriverManager.iedriver().setup();
             driver = new InternetExplorerDriver();
         }
-//        driver.get(url);
-//        driver.manage().window().maximize();//窗口最大化
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().window().maximize();//窗口最大化
+       // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @AfterMethod

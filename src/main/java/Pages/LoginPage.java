@@ -21,13 +21,10 @@ public class LoginPage extends BasePage {
     }
     public void login(String username, String password){
         String url="https://www.trip.com/account/signin?curr=USD&language=EN&locale=en_us&backurl=https%3A%2F%2Fwww.trip.com%2Fflights%2F";
-       /* if (environment.equals("Bastion") ) {
-            url = "https://www.trip.com/account/signin?curr=USD&language=EN&locale=en_us&backurl=https%3A%2F%2Fwww.trip.com%2Fflights%2F";
-        }else {
-            url = "https://www.fat1.qa.nt.tripcorp.com/account/signin?curr=USD&language=EN&locale=en_us&backurl=https%3A%2F%2Fwww.fat1.qa.nt.tripcorp.com%2Fflights";
-        }*/
-        driver.get(url);
         driver.manage().deleteAllCookies();
+        driver.get(url);
+        //driver.manage().window().maximize();//窗口最大化
+        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         sendKeys(userNameBox,username);
         sendKeys(passwordBox, password);
         //if visiable dragButton:
