@@ -25,14 +25,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-@AutoConfigureMockMvc
+//@AutoConfigureMockMvc
 @SpringBootTest(classes=UiautoApplication.class)
 @PropertySource(value="classpath:config.properties")
 @Component
 class BaseTest extends AbstractTestNGSpringContextTests {
     public static WebDriver driver;
-    @Autowired
-    private MockMvc mockMvc;
+    //@Autowired
+   // private MockMvc mockMvc;
     //@Autowired
     //private WebApplicationContext webApplicationContext;
     @Value("${driver.browser}")

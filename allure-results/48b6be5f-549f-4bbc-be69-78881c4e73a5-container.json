@@ -1,0 +1,1 @@
+{"uuid":"48b6be5f-549f-4bbc-be69-78881c4e73a5","name":"com.uiauto.BaseTest.teardown","children":["2b14296b-6cb2-4442-919f-86cd6020e10c"],"description":"","befores":[],"afters":[{"name":"teardown","status":"broken","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1656140871679,"stop":1656140871679}],"start":1656140871679,"stop":1656140871679}

@@ -8,36 +8,26 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends BasePage {
-    @FindBy(how = How.ID, using = "userName")
+    @FindBy(how=How.XPATH,using="//input[@id='nloginname' and @class='r_input']")
     public WebElement userNameBox;
-    @FindBy(how = How.ID, using = "txtPassword")
+    @FindBy(how = How.XPATH, using ="//input[@type='password' and @id='npwd']")
     public WebElement passwordBox;
-    public WebElement signinButton;
-    @FindBy(how = How.CLASS_NAME , using = "loading-brick")
-    public WebElement loadingIndicator;
-    By dragButton = new By.ByClassName("cpt-drop-btn");
+    @FindBy(how = How.XPATH, using ="//input[@type='checkbox' and @class='agreement-checkbox']")
+    public WebElement protocolBox;
+    By submit=new By.ById("nsubmit");
     public LoginPage(WebDriver driver){
         super(driver);
     }
-    public void login(String username, String password){
-        String url="https://www.trip.com/account/signin?curr=USD&language=EN&locale=en_us&backurl=https%3A%2F%2Fwww.trip.com%2Fflights%2F";
+    public HomePage login(String username, String password){
+        String url="https://passport.ctrip.com/user/login?BackUrl=https%3A%2F%2Fwww.ctrip.com%2F#ctm_ref=c_ph_login_buttom";
         driver.manage().deleteAllCookies();
         driver.get(url);
-        //driver.manage().window().maximize();//窗口最大化
-        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         sendKeys(userNameBox,username);
         sendKeys(passwordBox, password);
-        //if visiable dragButton:
-       /* if (isPresent(dragButton)) {
-            dragAndDrop(dragButton, 263, 0);
-        }
-        waitClickable(signinButton);
-        clickAndWaitInvisible(signinButton, loadingIndicator);*/
-    }
-    //跳转界面
-    public LoginPage search(){
-        click(dragButton);
-        return PageFactory.initElements(driver, LoginPage.class);
+        click(protocolBox);
+        click(submit);
+        //跳转界面
+        return PageFactory.initElements(driver, HomePage.class);
     }
 }
 

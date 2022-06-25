@@ -21,15 +21,13 @@ mybatis:
    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 spring:
- datasource:
+  datasource:
+    username: root
+    password: dansmile3205
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/auto_test?characterEncoding=utf8&useSSL=false&serverZone=UTC&rewriteBatchedStatements=true
+    type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      db-type: com.alibaba.druid.pool.DruidDataSource
-      driver: com.mysql.cj.jdbc.Driver
-      ######数据库名、用户名和密码稍后替换######
-      url:  jdbc:mysql://localhost:3306/auto_test?characterEncoding=utf8&useSSL=false&serverZone=UTC&rewriteBatchedStatements=true
-      username: root
-      password: dansmile3205
-      #下面为连接池的补充设置，应用到上面所有数据源中
       #初始化大小，最小，最大
       initial-size: 5
       min-idle: 5
@@ -71,39 +69,31 @@ spring:
         enabled: true
         #添加过滤规则：那些访问拦截统计
         url-pattern: /*
- #redis配置
- redis:
-   database: 0
-   host: 127.0.0.1
-   port: 6379
-   jedis:
-     pool:
-       max-idle: 10 # 连接池中的最大空闲连接
-       max-active: 200 #连接池最大连接数（使用负值表示没有限制）
-       min-idle: 0 #连接池中的最小空闲连接
-       max-wait: -1 #连接池最大阻塞等待时间（使用负值表示没有限制）
-   timeout: 6000 #连接超时时间（毫秒）
 
-#rabbitmq配置
- rabbitmq:
-   host: 127.0.0.1
-   port: 5672
-   username: XXXXX
-   password: XXXXX
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    jedis:
+      pool:
+        max-idle: 10 # 连接池中的最大空闲连接
+        max-active: 200 #连接池最大连接数（使用负值表示没有限制）
+        min-idle: 0 #连接池中的最小空闲连接
+        max-wait: -1 #连接池最大阻塞等待时间（使用负值表示没有限制）
+    timeout: 6000 #连接超时时间（毫秒）
 
-#热部署配置（或者使用JRebel）
- devtools:
-   restart:
-     enabled: true #开启热部署
-     additional-paths: src/main/java
-     exclude: static/**
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: XXXXX
+    password: XXXXX
 
- # 页面修改后立即生效，关闭缓存，立即刷新
- thymeleaf:
-   cache: false
-
- freemarker:
-   cache: false
-
-
+  #热部署配置（或者使用JRebel）
+  devtools:
+    restart:
+      enabled: true #开启热部署
+      additional-paths: src/main/java
+      exclude: static/**
+  freemarker:
+    cache: false
 

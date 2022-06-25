@@ -1,0 +1,1 @@
+{"uuid":"8ec1577d-4ed9-4df5-b3a7-70ea2b2201e0","name":"com.uiauto.BaseTest.setUp","children":["d475c09a-1b57-4a40-8d06-8064637a11f6"],"description":"","befores":[{"name":"setUp","status":"broken","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1656141283571,"stop":1656141283571}],"afters":[],"start":1656141283571,"stop":1656141283571}
