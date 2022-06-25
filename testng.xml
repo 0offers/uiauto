@@ -7,7 +7,7 @@
     <test name="FirefoxTest">
         <parameter name="browser" value="Firefox"/>
         <classes>
-            <class name="com.uiauto.BaseTest"/>
+            <class name="com.uiauto.FlightWithLoginTest"/>
         </classes>
     </test>
 </suite>
