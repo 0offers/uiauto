@@ -10,6 +10,13 @@
             <class name="com.uiauto.FlightWithLoginTest"/>
         </classes>
     </test>
+    <!--多线程启动不同的浏览器-->
+    <test name="chromeTest">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.uiauto.FlightWithLoginTest"/>
+        </classes>
+    </test>
 </suite>
         <!--parallel的取值有三个
         1、tests

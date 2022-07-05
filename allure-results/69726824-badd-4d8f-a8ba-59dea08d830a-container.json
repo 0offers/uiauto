@@ -1,0 +1,1 @@
+{"uuid":"69726824-badd-4d8f-a8ba-59dea08d830a","name":"FirefoxTest","children":["4198e6f7-5b2b-406b-a770-c595cd753264"],"befores":[{"name":"cleanUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1656145030314,"stop":1656145030344}],"afters":[],"start":1656145030296,"stop":1656145057192}
